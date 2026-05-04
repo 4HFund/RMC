@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -479,6 +480,7 @@
     position: relative;
   }
   .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+  
   .about-photo-tag {
     position: absolute;
     top: 2rem; right: -1.5rem;
@@ -489,6 +491,14 @@
     padding: 0.6rem 1.2rem;
     border-radius: 50px;
   }
+  /* Pull tag inside on mobile to avoid horizontal scrolling/cutting off */
+  @media(max-width: 900px) {
+    .about-photo-tag {
+      right: 1rem;
+      top: 1rem;
+    }
+  }
+
   .about-pull {
     font-family: var(--italic);
     font-size: 1.7rem; font-style: italic;
@@ -922,3 +932,5 @@
 </body>
 </html>
 
+
+```
