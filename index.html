@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,7 +149,9 @@
     position: relative;
     z-index: 2;
   }
-  @media(max-width: 900px) { .hero-left { padding: 10rem 2rem 4rem; } }
+  @media(max-width: 900px) { 
+    .hero-left { padding: 8rem 2rem 4rem; } 
+  }
 
   .hero-eyebrow {
     display: flex; align-items: center; gap: 1rem;
@@ -164,7 +167,7 @@
 
   .hero-h1 {
     font-family: var(--serif);
-    font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+    font-size: clamp(2.8rem, 8vw, 5.5rem); /* Scaled down slightly for mobile */
     font-weight: 400;
     line-height: 1.05;
     letter-spacing: -0.01em;
@@ -189,6 +192,10 @@
     padding-top: 2.5rem;
     border-top: 1px solid var(--border);
   }
+  @media(max-width: 900px) {
+    .hero-stats { gap: 2rem; }
+  }
+
   .stat-num {
     font-family: var(--serif);
     font-size: 2rem; font-weight: 400;
@@ -201,7 +208,9 @@
     overflow: hidden;
     background: var(--parchment);
   }
-  @media(max-width:900px){ .hero-right { min-height: 55vw; } }
+  @media(max-width:900px){ 
+    .hero-right { min-height: 450px; } /* Fixed minimum height so mobile image isn't squished */
+  }
 
   .hero-right img {
     position: absolute; inset: 0;
@@ -233,6 +242,15 @@
     max-width: 220px;
     box-shadow: 0 12px 40px rgba(61,44,34,0.08);
   }
+  @media(max-width:900px) {
+    .hero-badge {
+      bottom: 2rem;
+      left: 2rem;
+      right: 2rem;
+      max-width: calc(100% - 4rem); /* Constrains width on very small phones */
+    }
+  }
+
   .hero-badge-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--terra); font-weight: 600; margin-bottom: 0.4rem; }
   .hero-badge-text { font-family: var(--serif); font-size: 1.05rem; color: var(--brown); line-height: 1.4; font-style: italic; }
 
@@ -242,6 +260,9 @@
     border-radius: 50%;
     border: 1px solid var(--border);
     pointer-events: none;
+  }
+  @media(max-width:900px) {
+    .deco-circle { display: none; } /* Hides overlapping circle on mobile layout */
   }
 
   /* ─── RIBBON ─── */
@@ -579,48 +600,41 @@
       <!-- decorative circles -->
       <div class="deco-circle" style="width:500px;height:500px;top:-150px;left:-200px;opacity:0.35;"></div>
 
-```
-  <div class="hero-eyebrow reveal">For the mom carrying too much</div>
+      <div class="hero-eyebrow reveal">For the mom carrying too much</div>
 
-  <h1 class="hero-h1 reveal d1">
-    Release<br>the pressure.<br>Restore your <em>calm.</em>
-  </h1>
+      <h1 class="hero-h1 reveal d1">
+        Release<br>the pressure.<br>Restore your <em>calm.</em>
+      </h1>
 
-  <p class="hero-sub reveal d2">
-    You are not failing. You are carrying more than one nervous system was meant to hold alone. Rachel helps overwhelmed moms slow down, regulate stress, and feel like themselves again.
-  </p>
+      <p class="hero-sub reveal d2">
+        You are not failing. You are carrying more than one nervous system was meant to hold alone. Rachel helps overwhelmed moms slow down, regulate stress, and feel like themselves again.
+      </p>
 
-  <div class="hero-btns reveal d3">
-    <a href="book.html" class="btn btn-solid btn-arrow">Book a Free Call</a>
-    <a href="#reset" class="btn btn-ghost">5-Minute Reset</a>
-  </div>
+      <div class="hero-btns reveal d3">
+        <a href="book.html" class="btn btn-solid btn-arrow">Book a Free Call</a>
+        <a href="#reset" class="btn btn-ghost">5-Minute Reset</a>
+      </div>
 
-  <div class="hero-stats reveal d4">
-    <div>
-      <span class="stat-num">100+</span>
-      <span class="stat-label">Women Supported</span>
+      <div class="hero-stats reveal d4">
+        <div>
+          <span class="stat-num">Virtual</span>
+          <span class="stat-label">Coaching Available</span>
+        </div>
+        <div>
+          <span class="stat-num">Real</span>
+          <span class="stat-label">Lasting Change</span>
+        </div>
+      </div>
     </div>
-    <div>
-      <span class="stat-num">Virtual</span>
-      <span class="stat-label">Coaching Available</span>
-    </div>
-    <div>
-      <span class="stat-num">Real</span>
-      <span class="stat-label">Lasting Change</span>
-    </div>
-  </div>
-</div>
 
-<div class="hero-right">
-  <img src="IMG_4099.jpeg" alt="Rachel McBride">
-  <div class="hero-right-overlay"></div>
-  <div class="hero-badge reveal d2">
-    <div class="hero-badge-label">Today's permission</div>
-    <div class="hero-badge-text">"You do not have to hold it all by yourself."</div>
-  </div>
-</div>
-```
-
+    <div class="hero-right">
+      <img src="IMG_4099.jpeg" alt="Rachel McBride">
+      <div class="hero-right-overlay"></div>
+      <div class="hero-badge reveal d2">
+        <div class="hero-badge-label">Today's permission</div>
+        <div class="hero-badge-text">"You do not have to hold it all by yourself."</div>
+      </div>
+    </div>
   </section>
 
   <!-- RIBBON -->
@@ -650,27 +664,24 @@
         <p class="s-body">Rachel helps high-achieving, deeply caring moms slow down, regulate their nervous systems, reconnect with themselves, and build support that actually fits real life.</p>
       </div>
 
-```
-  <div class="transform-grid reveal d1">
-    <div class="transform-card" data-num="01">
-      <div class="t-icon">🌿</div>
-      <div class="t-title">Grounded</div>
-      <p class="t-body">You feel anchored in your body and present in your life — no longer swept away by everyone else's needs.</p>
+      <div class="transform-grid reveal d1">
+        <div class="transform-card" data-num="01">
+          <div class="t-icon">🌿</div>
+          <div class="t-title">Grounded</div>
+          <p class="t-body">You feel anchored in your body and present in your life — no longer swept away by everyone else's needs.</p>
+        </div>
+        <div class="transform-card" data-num="02">
+          <div class="t-icon">☁️</div>
+          <div class="t-title">Calmer</div>
+          <p class="t-body">Your nervous system learns a new baseline — one that is not always bracing for the next thing.</p>
+        </div>
+        <div class="transform-card" data-num="03">
+          <div class="t-icon">✨</div>
+          <div class="t-title">More Energized</div>
+          <p class="t-body">You stop running on empty and move through your days with clarity, capacity, and steadiness.</p>
+        </div>
+      </div>
     </div>
-    <div class="transform-card" data-num="02">
-      <div class="t-icon">☁️</div>
-      <div class="t-title">Calmer</div>
-      <p class="t-body">Your nervous system learns a new baseline — one that is not always bracing for the next thing.</p>
-    </div>
-    <div class="transform-card" data-num="03">
-      <div class="t-icon">✨</div>
-      <div class="t-title">More Energized</div>
-      <p class="t-body">You stop running on empty and move through your days with clarity, capacity, and steadiness.</p>
-    </div>
-  </div>
-</div>
-```
-
   </section>
 
   <!-- IS THIS YOU -->
@@ -686,40 +697,37 @@
           </div>
         </div>
 
-```
-    <div>
-      <div class="s-label reveal">Is This You?</div>
-      <h2 class="s-title reveal d1">This is for you if…</h2>
+        <div>
+          <div class="s-label reveal">Is This You?</div>
+          <h2 class="s-title reveal d1">This is for you if…</h2>
 
-      <ul class="checklist">
-        <li class="reveal d1">
-          <span class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          You feel constantly behind, even when you're doing everything you can.
-        </li>
-        <li class="reveal d2">
-          <span class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Your brain will not turn off at night.
-        </li>
-        <li class="reveal d3">
-          <span class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          You snap at people you love, then carry the guilt afterward.
-        </li>
-        <li class="reveal d4">
-          <span class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          You feel stretched thin by work, family, schedules, finances, and expectations.
-        </li>
-        <li class="reveal d5">
-          <span class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          You want space, ease, calm, and the feeling of being yourself again.
-        </li>
-      </ul>
+          <ul class="checklist">
+            <li class="reveal d1">
+              <span class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              You feel constantly behind, even when you're doing everything you can.
+            </li>
+            <li class="reveal d2">
+              <span class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Your brain will not turn off at night.
+            </li>
+            <li class="reveal d3">
+              <span class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              You snap at people you love, then carry the guilt afterward.
+            </li>
+            <li class="reveal d4">
+              <span class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              You feel stretched thin by work, family, schedules, finances, and expectations.
+            </li>
+            <li class="reveal d5">
+              <span class="check-mark"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              You want space, ease, calm, and the feeling of being yourself again.
+            </li>
+          </ul>
 
-      <a href="book.html" class="btn btn-solid btn-arrow reveal d5">Book a Free Connection Call</a>
+          <a href="book.html" class="btn btn-solid btn-arrow reveal d5">Book a Free Connection Call</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-```
-
   </section>
 
   <!-- TESTIMONIALS -->
@@ -734,42 +742,36 @@
         <p class="s-body reveal d2" style="max-width:320px;">From wellness circles to private coaching — here's what women are saying.</p>
       </div>
 
-```
-  <div class="testi-grid">
-    <div class="testi-card reveal">
-      <div>
-        <span class="testi-open-quote">"</span>
-        <p class="testi-quote">Your voice was calming and it only took a little to feel like I was out of my thoughts and in my body. I didn't know anyone around me and still relaxed.</p>
-      </div>
-      <div>
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-attr">Wellness Circle Participant</div>
-      </div>
-    </div>
-    <div class="testi-card reveal d2">
-      <div>
-        <span class="testi-open-quote">"</span>
-        <p class="testi-quote">Who knew I could focus on what I was doing in the moment — and not worry about the next thing on my to-do list! A much needed time to focus on myself.</p>
-      </div>
-      <div>
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-attr">Wellness Circle Participant</div>
-      </div>
-    </div>
-    <div class="testi-card reveal d3">
-      <div>
-        <span class="testi-open-quote">"</span>
-        <p class="testi-quote">I felt more calm, relaxed, and lighter after and would recommend it to everyone. The 1-hour timeslot felt perfect — not too long or too short.</p>
-      </div>
-      <div>
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-attr">Wellness Circle Participant</div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div>
+            <p class="testi-quote">Your voice was calming and it only took a little to feel like I was out of my thoughts and in my body. I didn't know anyone around me and still relaxed.</p>
+          </div>
+          <div>
+            <div class="testi-stars">★★★★★</div>
+            <div class="testi-attr">Wellness Circle Participant</div>
+          </div>
+        </div>
+        <div class="testi-card reveal d2">
+          <div>
+            <p class="testi-quote">Who knew I could focus on what I was doing in the moment — and not worry about the next thing on my to-do list! A much needed time to focus on myself.</p>
+          </div>
+          <div>
+            <div class="testi-stars">★★★★★</div>
+            <div class="testi-attr">Wellness Circle Participant</div>
+          </div>
+        </div>
+        <div class="testi-card reveal d3">
+          <div>
+            <p class="testi-quote">I felt more calm, relaxed, and lighter after and would recommend it to everyone. The 1-hour timeslot felt perfect — not too long or too short.</p>
+          </div>
+          <div>
+            <div class="testi-stars">★★★★★</div>
+            <div class="testi-attr">Wellness Circle Participant</div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-```
-
   </section>
 
   <!-- ABOUT STRIP -->
@@ -887,3 +889,7 @@
 
 </body>
 </html>
+
+
+
+```
