@@ -1,8 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Rachel McBride Coaching — Release the Pressure. Restore Your Calm.</title>
 <meta name="description" content="Rachel McBride Coaching helps overwhelmed moms release pressure, regulate stress, and feel calm, grounded, and connected to themselves again." />
 
@@ -11,6 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Jost:wght@300;400;500;600&family=Cormorant+Infant:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 
 <style>
+  /* ==========================================================================
+     GLOBAL VARIABLES & RESETS
+     ========================================================================== */
   :root {
     --cream:    #faf6f0;
     --parchment:#f2ebe0;
@@ -39,10 +43,15 @@
     overflow-x: hidden;
   }
 
+  /* Add padding to bottom of mobile view so content isn't hidden by the floating button */
+  @media(max-width: 900px) {
+    body { padding-bottom: 90px; }
+  }
+
   img { display: block; max-width: 100%; height: auto; }
   a { text-decoration: none; color: inherit; }
 
-  /* ─── GRAIN OVERLAY ─── */
+  /* Grain Overlay */
   body::before {
     content: '';
     position: fixed;
@@ -53,11 +62,11 @@
     z-index: 9999;
   }
 
-  /* ─── CONTAINERS ─── */
   .wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 2.5rem; }
-  .wrap-narrow { max-width: 900px; margin: 0 auto; padding: 0 2.5rem; }
-
-  /* ─── NAV ─── */
+  
+  /* ==========================================================================
+     NAVIGATION
+     ========================================================================== */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -93,8 +102,8 @@
   }
   .nav-cta:hover { background: var(--terra) !important; color: var(--white) !important; }
 
-  /* hamburger */
-  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  /* Hamburger Menu */
+  .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; z-index: 2001; }
   .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--brown); transition: transform 0.3s; }
   .mobile-menu {
     position: fixed; inset: 0;
@@ -110,7 +119,9 @@
   .mobile-close { position: absolute; top: 2rem; right: 2.5rem; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--muted); }
   @media(max-width: 900px){ .nav-links { display: none; } .hamburger { display: flex; } }
 
-  /* ─── BUTTONS ─── */
+  /* ==========================================================================
+     BUTTONS
+     ========================================================================== */
   .btn {
     display: inline-flex; align-items: center; gap: 0.6rem;
     padding: 0.9rem 2.2rem;
@@ -130,7 +141,37 @@
   .btn-ghost:hover { background: var(--brown); color: var(--white); }
   .btn-arrow::after { content: '→'; font-size: 1rem; }
 
-  /* ─── HERO ─── */
+  /* Floating Mobile Button */
+  .floating-mobile-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 5%;
+    width: 90%;
+    background-color: var(--terra);
+    color: var(--white);
+    border: 4px solid var(--brown);
+    border-radius: 50px;
+    padding: 1.1rem;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 1.1rem;
+    font-weight: 500;
+    z-index: 1500;
+    box-shadow: 0 10px 25px rgba(61,44,34,0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  .floating-mobile-btn:active {
+    transform: scale(0.97);
+    background-color: var(--terra-dk);
+  }
+  @media(max-width: 900px) {
+    .floating-mobile-btn { display: block; }
+  }
+
+  /* ==========================================================================
+     HERO
+     ========================================================================== */
   #hero {
     min-height: 100svh;
     display: grid;
@@ -148,9 +189,7 @@
     position: relative;
     z-index: 2;
   }
-  @media(max-width: 900px) { 
-    .hero-left { padding: 8rem 2rem 4rem; } 
-  }
+  @media(max-width: 900px) { .hero-left { padding: 8rem 2rem 4rem; } }
 
   .hero-eyebrow {
     display: flex; align-items: center; gap: 1rem;
@@ -166,7 +205,7 @@
 
   .hero-h1 {
     font-family: var(--serif);
-    font-size: clamp(2.8rem, 8vw, 5.5rem); /* Scaled down slightly for mobile */
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
     font-weight: 400;
     line-height: 1.05;
     letter-spacing: -0.01em;
@@ -191,9 +230,7 @@
     padding-top: 2.5rem;
     border-top: 1px solid var(--border);
   }
-  @media(max-width: 900px) {
-    .hero-stats { gap: 2rem; }
-  }
+  @media(max-width: 900px) { .hero-stats { gap: 2rem; } }
 
   .stat-num {
     font-family: var(--serif);
@@ -207,9 +244,7 @@
     overflow: hidden;
     background: var(--parchment);
   }
-  @media(max-width:900px){ 
-    .hero-right { min-height: 450px; } /* Fixed minimum height so mobile image isn't squished */
-  }
+  @media(max-width:900px){ .hero-right { min-height: 450px; } }
 
   .hero-right img {
     position: absolute; inset: 0;
@@ -243,10 +278,8 @@
   }
   @media(max-width:900px) {
     .hero-badge {
-      bottom: 2rem;
-      left: 2rem;
-      right: 2rem;
-      max-width: calc(100% - 4rem); /* Constrains width on very small phones */
+      bottom: 2rem; left: 2rem; right: 2rem;
+      max-width: calc(100% - 4rem);
     }
   }
 
@@ -260,11 +293,11 @@
     border: 1px solid var(--border);
     pointer-events: none;
   }
-  @media(max-width:900px) {
-    .deco-circle { display: none; } /* Hides overlapping circle on mobile layout */
-  }
+  @media(max-width:900px) { .deco-circle { display: none; } }
 
-  /* ─── RIBBON ─── */
+  /* ==========================================================================
+     RIBBON
+     ========================================================================== */
   .ribbon {
     background: var(--terra);
     padding: 1.2rem 0;
@@ -285,7 +318,9 @@
   }
   .ribbon-dot { width: 4px; height: 4px; background: rgba(255,255,255,0.5); border-radius: 50%; flex-shrink: 0; }
 
-  /* ─── SECTION BASE ─── */
+  /* ==========================================================================
+     SECTION GLOBALS
+     ========================================================================== */
   section { padding: 8rem 0; }
   .s-label {
     display: inline-flex; align-items: center; gap: 0.8rem;
@@ -304,7 +339,9 @@
   h2.s-title em { font-style: italic; color: var(--terra); }
   .s-body { font-size: 1.05rem; font-weight: 300; color: var(--muted); max-width: 560px; line-height: 1.85; }
 
-  /* ─── TRANSFORMATION ─── */
+  /* ==========================================================================
+     TRANSFORMATION
+     ========================================================================== */
   #transformation { background: var(--parchment); }
   .transform-grid {
     display: grid;
@@ -345,7 +382,9 @@
   }
   .t-body { font-size: 0.95rem; font-weight: 300; color: var(--muted); line-height: 1.8; }
 
-  /* ─── IS THIS YOU ─── */
+  /* ==========================================================================
+     IS THIS YOU
+     ========================================================================== */
   #ideal { background: var(--cream); }
   .ideal-layout {
     display: grid;
@@ -394,9 +433,12 @@
   }
   .check-mark svg { width: 11px; height: 11px; stroke: var(--terra); }
 
-  /* ─── TESTIMONIALS ─── */
+  /* ==========================================================================
+     TESTIMONIALS (Tightened & Quotes Removed)
+     ========================================================================== */
   #testimonials { background: var(--parchment); }
   .testimonials-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; gap: 2rem; flex-wrap: wrap; }
+  
   .testi-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -408,10 +450,9 @@
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: 20px;
-    padding: 2.8rem 2.4rem;
+    padding: 2rem; /* Tighter padding */
     display: flex; flex-direction: column; justify-content: space-between;
-    gap: 2rem;
-    position: relative;
+    gap: 1.2rem; /* Closer gap between quote and author */
     transition: box-shadow 0.3s, transform 0.3s;
   }
   .testi-card:hover { box-shadow: 0 20px 60px rgba(61,44,34,0.1); transform: translateY(-4px); }
@@ -420,22 +461,49 @@
     font-size: 1.1rem;
     font-style: italic;
     color: var(--brown);
-    line-height: 1.75;
-  }
-  .testi-open-quote {
-    font-family: var(--serif);
-    font-size: 4rem;
-    color: var(--terra);
-    opacity: 0.25;
-    line-height: 0.5;
-    margin-bottom: 1rem;
-    display: block;
+    line-height: 1.65;
   }
   .testi-attr { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
   .testi-stars { color: var(--terra); font-size: 0.85rem; margin-bottom: 0.4rem; }
 
-  /* ─── LEAD MAGNET ─── */
-  #reset { background: var(--cream); }
+  /* ==========================================================================
+     ABOUT STRIP
+     ========================================================================== */
+  #about-strip { background: var(--cream); padding: 7rem 0; }
+  .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; }
+  @media(max-width:900px){ .about-layout { grid-template-columns: 1fr; gap: 4rem; } }
+  .about-photo {
+    aspect-ratio: 4/5;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--beige);
+    position: relative;
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .about-photo-tag {
+    position: absolute;
+    top: 2rem; right: -1.5rem;
+    background: var(--terra);
+    color: var(--white);
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+  }
+  .about-pull {
+    font-family: var(--italic);
+    font-size: 1.7rem; font-style: italic;
+    color: var(--terra); line-height: 1.5;
+    margin: 2rem 0;
+    padding-left: 2rem;
+    border-left: 2px solid var(--terra-lt);
+  }
+  .about-body { font-size: 1rem; font-weight: 300; color: var(--muted); line-height: 1.9; }
+
+  /* ==========================================================================
+     LEAD MAGNET
+     ========================================================================== */
+  #reset { background: var(--parchment); padding-bottom: 8rem; }
   .reset-inner {
     background: var(--brown);
     border-radius: 28px;
@@ -493,39 +561,9 @@
   .btn-reset { background: var(--terra); color: var(--white); border-color: var(--terra); width: 100%; justify-content: center; }
   .btn-reset:hover { background: var(--terra-lt); border-color: var(--terra-lt); }
 
-  /* ─── ABOUT STRIP ─── */
-  #about-strip { background: var(--parchment); padding: 7rem 0; }
-  .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center; }
-  @media(max-width:900px){ .about-layout { grid-template-columns: 1fr; gap: 4rem; } }
-  .about-photo {
-    aspect-ratio: 4/5;
-    border-radius: 24px;
-    overflow: hidden;
-    background: var(--beige);
-    position: relative;
-  }
-  .about-photo img { width: 100%; height: 100%; object-fit: cover; }
-  .about-photo-tag {
-    position: absolute;
-    top: 2rem; right: -1.5rem;
-    background: var(--terra);
-    color: var(--white);
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    padding: 0.6rem 1.2rem;
-    border-radius: 50px;
-  }
-  .about-pull {
-    font-family: var(--italic);
-    font-size: 1.7rem; font-style: italic;
-    color: var(--terra); line-height: 1.5;
-    margin: 2rem 0;
-    padding-left: 2rem;
-    border-left: 2px solid var(--terra-lt);
-  }
-  .about-body { font-size: 1rem; font-weight: 300; color: var(--muted); line-height: 1.9; }
-
-  /* ─── FOOTER ─── */
+  /* ==========================================================================
+     FOOTER
+     ========================================================================== */
   footer {
     background: var(--brown);
     color: rgba(255,255,255,0.7);
@@ -551,7 +589,9 @@
   .footer-links a:hover { color: var(--white); }
   .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: rgba(255,255,255,0.25); }
 
-  /* ─── ANIMATIONS ─── */
+  /* ==========================================================================
+     ANIMATIONS
+     ========================================================================== */
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.85s cubic-bezier(0.2,0.6,0.4,1), transform 0.85s cubic-bezier(0.2,0.6,0.4,1); }
   .reveal.in { opacity: 1; transform: none; }
   .d1 { transition-delay: 0.08s; }
@@ -565,7 +605,6 @@
 <body>
 
 <!-- NAV -->
-
 <nav id="siteNav">
   <div class="wrap nav-inner">
     <a href="index.html" class="nav-logo">Rachel <em>McBride</em> Coaching</a>
@@ -593,10 +632,9 @@
 <main>
 
   <!-- HERO -->
-
   <section id="hero">
     <div class="hero-left">
-      <!-- decorative circles -->
+      <!-- decorative circles (hidden on mobile) -->
       <div class="deco-circle" style="width:500px;height:500px;top:-150px;left:-200px;opacity:0.35;"></div>
 
       <div class="hero-eyebrow reveal">For the mom carrying too much</div>
@@ -637,7 +675,6 @@
   </section>
 
   <!-- RIBBON -->
-
   <div class="ribbon">
     <div class="ribbon-track">
       <span class="ribbon-item">Private Coaching <span class="ribbon-dot"></span></span>
@@ -654,7 +691,6 @@
   </div>
 
   <!-- TRANSFORMATION -->
-
   <section id="transformation">
     <div class="wrap">
       <div class="reveal">
@@ -684,7 +720,6 @@
   </section>
 
   <!-- IS THIS YOU -->
-
   <section id="ideal">
     <div class="wrap">
       <div class="ideal-layout">
@@ -729,8 +764,7 @@
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-
+  <!-- TESTIMONIALS (Tightened formatting) -->
   <section id="testimonials">
     <div class="wrap">
       <div class="testimonials-header">
@@ -774,7 +808,6 @@
   </section>
 
   <!-- ABOUT STRIP -->
-
   <section id="about-strip">
     <div class="wrap">
       <div class="about-layout">
@@ -799,8 +832,7 @@
   </section>
 
   <!-- LEAD MAGNET -->
-
-  <section id="reset" style="padding-bottom:8rem;">
+  <section id="reset">
     <div class="wrap">
       <div class="reset-inner reveal">
         <div style="position:relative;z-index:1;">
@@ -827,7 +859,6 @@
 </main>
 
 <!-- FOOTER -->
-
 <footer>
   <div class="wrap">
     <div class="footer-top">
@@ -862,6 +893,9 @@
   </div>
 </footer>
 
+<!-- FLOATING MOBILE BUTTON -->
+<a href="book.html" class="floating-mobile-btn">Book a Free Connection Call</a>
+
 <script>
   // Nav scroll
   const nav = document.getElementById('siteNav');
@@ -888,3 +922,6 @@
 
 </body>
 </html>
+
+
+```
