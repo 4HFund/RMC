@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Process — Rachel McBride Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4eee6; /* Restored original warm beige */
+    --dark-brown: #4a3b31;   /* Restored rich dark brown */
+    --text-dark: #2b2b2b;
+    --text-body: #4a4a4a;
+    --terra: #b67358;        /* Restored softer terracotta */
+    --terra-hover: #9c5c44;
+    --border-light: #eaddd3;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'DM Sans', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); color: var(--text-body); background-color: var(--bg-primary); line-height: 1.6; font-size: 16px; display: flex; flex-direction: column; min-height: 100vh; }
+  h1, h2, h3, h4, .font-serif { font-family: var(--font-serif); color: var(--text-dark); font-weight: 500; }
+  a { text-decoration: none; color: inherit; transition: color 0.3s; }
+  .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  
+  nav { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border-light); padding: 1rem 0; }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-dark); font-weight: 600; }
+  .nav-logo span { color: var(--terra); font-style: italic; font-weight: 400; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 1rem; font-weight: 500; }
+  .nav-links a:hover, .nav-links a.active-link { color: var(--terra); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .hamburger span { display: block; width: 25px; height: 2px; background: var(--text-dark); }
+  .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: white; z-index: 2000; padding: 5rem 2rem; transition: right 0.3s ease; display: flex; flex-direction: column; gap: 2rem; box-shadow: -5px 0 30px rgba(0,0,0,0.1); }
+  .mobile-menu.open { right: 0; }
+  .mobile-menu a { font-size: 1.5rem; font-family: var(--font-serif); font-weight: 500; }
+  .mobile-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--text-dark); }
+  @media (max-width: 850px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+  section { padding: 6rem 0; }
+  .section-label { display: block; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--terra); margin-bottom: 1rem; font-weight: 600; }
+  .section-headline { font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
+  .section-intro { font-size: 1.15rem; max-width: 650px; margin-bottom: 3rem; color: var(--text-body); }
+  .bg-secondary { background-color: var(--bg-secondary); }
+
+  .method-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+  @media(min-width: 768px) { .method-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); } }
+  .method-card { background: var(--bg-primary); border: none; padding: 2.5rem; border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+  .method-step { font-family: var(--font-serif); font-size: 5rem; color: var(--bg-secondary); position: absolute; top: -15px; right: 10px; font-weight: 600; line-height: 1; z-index: 0; }
+  .method-title { font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-dark); margin-bottom: 1rem; position: relative; z-index: 1; }
+  .method-title em { display: block; font-size: 0.85rem; font-family: var(--font-sans); color: var(--terra); font-style: normal; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; font-weight: 600; }
+  .method-desc { position: relative; z-index: 1; font-size: 1.05rem; }
+
+  footer { background: #1a1a1a; color: #f0ebe1; padding: 5rem 0 2rem; margin-top: auto; }
+  .footer-inner { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 4rem; }
+  @media(min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+  .footer-brand-name { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 0.5rem; color: white; }
+  .footer-tagline { color: var(--terra); margin-bottom: 1.5rem; font-style: italic; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .footer-links a { color: #ccc; transition: color 0.3s; }
+  .footer-links a:hover { color: white; }
+  .footer-col-title { color: white; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; color: #888; }
+
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; } .delay-5 { transition-delay: 0.5s; }
+</style>
+</head>
+<body>
+
+<nav id="siteNav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Rachel <span>McBride</span> Coaching</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="process.html" class="active-link">Process</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="book.html" class="nav-cta" style="background: var(--terra); color: white; padding: 0.5rem 1.2rem; border-radius: 30px;">Book a Call</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="process.html" style="color: var(--terra);">Process</a>
+  <a href="services.html">Services</a>
+  <a href="book.html">Book a Call</a>
+</div>
+
+<main>
+  <section id="method" class="bg-secondary" style="padding-top: 8rem; min-height: 80vh;">
+    <div class="container">
+      <div class="fade-up text-center" style="max-width:700px; margin: 0 auto 4rem; text-align:center;">
+        <span class="section-label">The Process</span>
+        <h2 class="section-headline">A grounded path back to yourself</h2>
+        <p class="section-intro" style="margin:0 auto;">This is not about becoming a different woman. It is about helping you return to the woman who has been buried underneath the pressure.</p>
+      </div>
+
+      <div class="method-grid">
+        <div class="method-card fade-up delay-1">
+          <div class="method-step">01</div>
+          <div class="method-title"><em>Step One</em>Regulate</div>
+          <p class="method-desc">Calm your nervous system and learn how to notice what your body has been trying to tell you.</p>
+        </div>
+        <div class="method-card fade-up delay-2">
+          <div class="method-step">02</div>
+          <div class="method-title"><em>Step Two</em>Recognize</div>
+          <p class="method-desc">Name the patterns, pressure, and expectations that have kept you running on empty.</p>
+        </div>
+        <div class="method-card fade-up delay-3">
+          <div class="method-step">03</div>
+          <div class="method-title"><em>Step Three</em>Reconnect</div>
+          <p class="method-desc">Come back to your needs, your voice, your body, and the woman underneath all the roles.</p>
+        </div>
+        <div class="method-card fade-up delay-4">
+          <div class="method-step">04</div>
+          <div class="method-title"><em>Step Four</em>Release</div>
+          <p class="method-desc">Let go of the emotional weight, guilt, and expectations you were never meant to carry alone.</p>
+        </div>
+        <div class="method-card fade-up delay-5">
+          <div class="method-step">05</div>
+          <div class="method-title"><em>Step Five</em>Restore</div>
+          <p class="method-desc">Build rhythms that help you stay grounded, supported, and connected in your real life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">Rachel McBride Coaching</div>
+        <div class="footer-tagline">Release the pressure. Restore your calm.</div>
+        <div class="footer-contact"><p><a href="mailto:rachel@rachelmcbridecoaching.com">rachel@rachelmcbridecoaching.com</a></p></div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="process.html">Process</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="book.html">Book a Call</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <ul class="footer-links">
+          <li><a href="book.html">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Rachel McBride Coaching.</span>
+      <span>Made with intention — for the women who need it most.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  });
+</script>
+</body>
+</html>
