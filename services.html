@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Services — Rachel McBride Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root { 
+    --bg-primary: #ffffff; 
+    --bg-secondary: #f4eee6; /* Restored original warm beige */
+    --dark-brown: #4a3b31;   /* Restored rich dark brown */
+    --text-dark: #2b2b2b; 
+    --text-body: #4a4a4a; 
+    --terra: #b67358;        /* Restored softer terracotta */
+    --terra-hover: #9c5c44; 
+    --border-light: #eaddd3; 
+    --font-serif: 'Cormorant Garamond', serif; 
+    --font-sans: 'DM Sans', sans-serif; 
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); color: var(--text-body); background-color: var(--bg-primary); line-height: 1.6; font-size: 16px; display: flex; flex-direction: column; min-height: 100vh; }
+  h1, h2, h3, h4, .font-serif { font-family: var(--font-serif); color: var(--text-dark); font-weight: 500; }
+  a { text-decoration: none; color: inherit; transition: color 0.3s; }
+  .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+  /* Buttons */
+  .btn-primary, .btn-outline-terra { display: inline-block; padding: 0.8rem 1.8rem; border-radius: 30px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; text-align: center; }
+  .btn-primary { background: var(--terra) !important; color: white !important; border: 2px solid var(--terra) !important; }
+  .btn-primary:hover { background: var(--terra-hover) !important; border-color: var(--terra-hover) !important; }
+  .btn-outline-terra { background: transparent !important; color: var(--terra) !important; border: 1px solid var(--terra) !important; }
+  .btn-outline-terra:hover { background: var(--terra) !important; color: white !important; }
+  
+  nav { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border-light); padding: 1rem 0; }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-dark); font-weight: 600; }
+  .nav-logo span { color: var(--terra); font-style: italic; font-weight: 400; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 1rem; font-weight: 500; }
+  .nav-links a:hover, .nav-links a.active-link { color: var(--terra); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .hamburger span { display: block; width: 25px; height: 2px; background: var(--text-dark); }
+  .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: white; z-index: 2000; padding: 5rem 2rem; transition: right 0.3s ease; display: flex; flex-direction: column; gap: 2rem; box-shadow: -5px 0 30px rgba(0,0,0,0.1); }
+  .mobile-menu.open { right: 0; }
+  .mobile-menu a { font-size: 1.5rem; font-family: var(--font-serif); font-weight: 500; }
+  .mobile-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--text-dark); }
+  @media (max-width: 850px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+  section { padding: 6rem 0; }
+  .section-label { display: block; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--terra); margin-bottom: 1rem; font-weight: 600; }
+  .section-headline { font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
+  .section-intro { font-size: 1.15rem; max-width: 650px; margin-bottom: 3rem; color: var(--text-body); }
+
+  /* OVERRIDE FOR SERVICES CARDS - Restores your original design colors and fixes flex layout for buttons */
+  .services-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: stretch; }
+  @media(min-width: 900px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+  
+  .service-card { 
+    background: var(--bg-secondary) !important; /* Original Beige */
+    padding: 3rem 2rem !important; 
+    border-radius: 20px; 
+    border: none !important; 
+    display: flex !important; 
+    flex-direction: column !important; 
+    height: 100%; /* Stretches cards so they are equal height */
+    min-height: 0; 
+  }
+  
+  .service-card.featured { 
+    background: var(--dark-brown) !important; /* Original Brown */
+  }
+  
+  .service-card .service-label { 
+    font-size: 0.85rem; text-transform: uppercase; color: #8c7a6b !important; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 0.8rem; 
+  }
+  
+  .service-card .service-title { 
+    font-family: var(--font-serif); font-size: 2rem; color: var(--text-dark) !important; margin-bottom: 1.5rem; line-height: 1.2; 
+  }
+  
+  .service-card .service-desc { 
+    font-size: 1.05rem; color: var(--text-body) !important; line-height: 1.6;
+    flex-grow: 1; /* Forces the description block to take up free space */
+    padding-bottom: 2.5rem; /* Forces breathing room before the button */
+    margin: 0; /* Reset margins */
+  }
+  
+  .service-card a { 
+    margin-top: auto !important; /* Pushes button firmly to bottom */
+    align-self: flex-start; /* Stops button from stretching full width */
+  }
+
+  /* Specific Featured Card (Dark Brown) Color Overrides */
+  .service-card.featured .service-label { color: #d0c5bb !important; }
+  .service-card.featured .service-title { color: #ffffff !important; }
+  .service-card.featured .service-desc { color: #f0ebe1 !important; }
+
+  /* "Not sure where to start" styling - Restored to match screenshot (No white cards!) */
+  .path-callout { background: var(--bg-secondary); border-radius: 20px; padding: 4rem 2rem; text-align: center; max-width: 900px; margin: 5rem auto 0; }
+  .path-callout-title { font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dark); }
+  .path-steps { display: flex; flex-direction: column; gap: 0.5rem; max-width: 600px; margin: 0 auto 2rem; }
+  .path-step { background: transparent; padding: 0.2rem 0; border: none; font-size: 1.15rem; color: var(--text-body); }
+  .path-step strong { font-weight: 600; }
+
+  footer { background: #1a1a1a; color: #f0ebe1; padding: 5rem 0 2rem; margin-top: auto; }
+  .footer-inner { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 4rem; }
+  @media(min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+  .footer-brand-name { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 0.5rem; color: white; }
+  .footer-tagline { color: var(--terra); margin-bottom: 1.5rem; font-style: italic; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .footer-links a { color: #ccc; transition: color 0.3s; }
+  .footer-links a:hover { color: white; }
+  .footer-col-title { color: white; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; color: #888; }
+
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<nav id="siteNav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Rachel <span>McBride</span> Coaching</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="services.html" class="active-link">Services</a></li>
+      <li><a href="book.html" class="nav-cta" style="background: var(--terra); color: white; padding: 0.5rem 1.2rem; border-radius: 30px;">Book a Call</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="process.html">Process</a>
+  <a href="services.html" style="color: var(--terra);">Services</a>
+  <a href="book.html">Book a Call</a>
+</div>
+
+<main>
+  <section id="services-page" style="padding-top: 8rem;">
+    <div class="container">
+      <div class="fade-up text-center" style="max-width:700px; margin: 0 auto 4rem; text-align:center;">
+        <span class="section-label">Work Together</span>
+        <h2 class="section-headline">Choose the support that fits where you are</h2>
+        <p class="section-intro" style="margin:0 auto;">Whether you need personal support, community, or a gentle place to begin, Rachel offers coaching designed for real women living real lives.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card fade-up delay-1">
+          <div class="service-label">A guided reset for your body</div>
+          <div class="service-title">The Art of Release, Women’s Circles</div>
+          <p class="service-desc">Virtual and in-person guided experience where you can step out of the noise and into a space where you can finally exhale.</p>
+          <a href="book.html" class="btn-outline-terra">Join the next circle</a>
+        </div>
+
+        <div class="service-card fade-up delay-2">
+          <div class="service-label">Ongoing support for real life</div>
+          <div class="service-title">The Release Room Membership</div>
+          <p class="service-desc">Consistent access to somatic practices, live coaching, and a private space to regulate and reset with a community of women who get it.</p>
+          <a href="book.html" class="btn-outline-terra">Join the Interest List</a>
+        </div>
+
+        <div class="service-card featured fade-up delay-3">
+          <div class="service-label">Deep, personalized transformation</div>
+          <div class="service-title">10-Week Private Coaching Experience</div>
+          <p class="service-desc">For the woman who is done managing symptoms—and is ready to fundamentally change how she experiences her life.<br><br>This is a high-level, deeply personalized coaching container where we work closely together to support your nervous system, your patterns, and the reality of your day-to-day life.</p>
+          <a href="book.html" class="btn-primary">Book a Connection Call</a>
+        </div>
+      </div>
+
+      <div class="path-callout fade-up delay-4">
+        <h3 class="path-callout-title">Not Sure Where To Start?</h3>
+        <div class="path-steps">
+          <p class="path-step">Most women begin with a <strong>Release Circle</strong>.</p>
+          <p class="path-step">From there, they move into the <strong>Membership</strong> for ongoing support.</p>
+          <p class="path-step">And when they’re ready for deeper work, they step into <strong>private coaching</strong>.</p>
+        </div>
+        <p style="font-size:1.15rem; color: var(--text-body); margin-top: 2rem;">
+          You don’t have to figure it all out right now.<br>
+          <strong>You just have to take the first step.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">Rachel McBride Coaching</div>
+        <div class="footer-tagline">Release the pressure. Restore your calm.</div>
+        <div class="footer-contact"><p><a href="mailto:rachel@rachelmcbridecoaching.com">rachel@rachelmcbridecoaching.com</a></p></div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="process.html">Process</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="book.html">Book a Call</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <ul class="footer-links">
+          <li><a href="book.html">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Rachel McBride Coaching.</span>
+      <span>Made with intention — for the women who need it most.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  });
+</script>
+</body>
+</html>
+
