@@ -1,0 +1,240 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About — Rachel McBride Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4eee6; /* Restored original warm beige */
+    --dark-brown: #4a3b31;   /* Restored rich dark brown */
+    --text-dark: #2b2b2b;
+    --text-body: #4a4a4a;
+    --terra: #b67358;        /* Restored softer terracotta */
+    --terra-hover: #9c5c44;
+    --border-light: #eaddd3;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'DM Sans', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); color: var(--text-body); background-color: var(--bg-primary); line-height: 1.6; font-size: 16px; display: flex; flex-direction: column; min-height: 100vh; }
+  h1, h2, h3, h4, .font-serif { font-family: var(--font-serif); color: var(--text-dark); font-weight: 500; }
+  a { text-decoration: none; color: inherit; transition: color 0.3s; }
+  img { max-width: 100%; height: auto; display: block; }
+  .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  
+  nav { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border-light); padding: 1rem 0; }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-dark); font-weight: 600; }
+  .nav-logo span { color: var(--terra); font-style: italic; font-weight: 400; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 1rem; font-weight: 500; }
+  .nav-links a:hover, .nav-links a.active-link { color: var(--terra); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .hamburger span { display: block; width: 25px; height: 2px; background: var(--text-dark); }
+  .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: white; z-index: 2000; padding: 5rem 2rem; transition: right 0.3s ease; display: flex; flex-direction: column; gap: 2rem; box-shadow: -5px 0 30px rgba(0,0,0,0.1); }
+  .mobile-menu.open { right: 0; }
+  .mobile-menu a { font-size: 1.5rem; font-family: var(--font-serif); font-weight: 500; }
+  .mobile-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--text-dark); }
+  @media (max-width: 850px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+  section { padding: 6rem 0; }
+  .section-label { display: block; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--terra); margin-bottom: 1rem; font-weight: 600; }
+  .section-headline { font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
+  .section-headline em { color: var(--terra); font-style: italic; }
+  .bg-secondary { background-color: var(--bg-secondary); }
+
+  .problem-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .problem-body { font-size: 1.2rem; margin-bottom: 1.5rem; }
+  .problem-emphasis { font-size: 1.2rem; font-weight: 600; color: var(--terra); margin-top: 2rem; }
+
+  .yes-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
+  @media(min-width: 900px) { .yes-grid { grid-template-columns: 1fr 1.2fr; } }
+  .yes-card h2 { font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
+  .yes-list { display: flex; flex-direction: column; gap: 1rem; }
+  
+  /* Removed white boxes from Yes-list so it floats beautifully */
+  .yes-list-item { display: flex; gap: 1rem; align-items: flex-start; background: transparent; padding: 0.5rem 0; border: none; font-size: 1.15rem; color: var(--text-body); }
+  .check-icon { flex-shrink: 0; width: 24px; height: 24px; background: transparent; border: 1px solid var(--terra); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .check-icon svg { width: 14px; height: 14px; stroke: var(--terra); }
+
+  .bio-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; max-width: 1000px; margin: 0 auto; }
+  @media(min-width: 900px) { .bio-grid { grid-template-columns: 1fr 1fr; } }
+  .bio-image { width: 100%; border-radius: 16px; object-fit: cover; aspect-ratio: 4/5; background: #e0d8cc; }
+
+  footer { background: #1a1a1a; color: #f0ebe1; padding: 5rem 0 2rem; margin-top: auto; }
+  .footer-inner { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 4rem; }
+  @media(min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+  .footer-brand-name { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 0.5rem; color: white; }
+  .footer-tagline { color: var(--terra); margin-bottom: 1.5rem; font-style: italic; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .footer-links a { color: #ccc; transition: color 0.3s; }
+  .footer-links a:hover { color: white; }
+  .footer-col-title { color: white; font-weight: 600; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; color: #888; }
+
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<nav id="siteNav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Rachel <span>McBride</span> Coaching</a>
+    <ul class="nav-links">
+      <li><a href="about.html" class="active-link">About</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="book.html" class="nav-cta" style="background: var(--terra); color: white; padding: 0.5rem 1.2rem; border-radius: 30px;">Book a Call</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html" style="color: var(--terra);">About</a>
+  <a href="process.html">Process</a>
+  <a href="services.html">Services</a>
+  <a href="book.html">Book a Call</a>
+</div>
+
+<main>
+  <section id="problem" style="padding-top: 8rem;">
+    <div class="container">
+      <div class="problem-inner">
+        <span class="section-label fade-up">You Are Not Broken</span>
+        <h2 class="section-headline fade-up delay-1" style="font-size:3.5rem;">You are not “too emotional.”<br>You are <em>overloaded.</em></h2>
+        <p class="problem-body fade-up delay-2">You are managing schedules, appointments, work, relationships, teenagers, school meetings, sports, meals, bills, expectations, and the invisible mental load nobody else sees.</p>
+        <p class="problem-body fade-up delay-3">On the outside, you may look capable. Inside, you may feel stretched thin, irritable, disconnected, exhausted, and tired of pretending everything is fine.</p>
+        <p class="problem-emphasis fade-up delay-4">You do not need another person telling you to “just relax.” You need a safe place to breathe, be honest, and put some of the weight down.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="yes-section" class="bg-secondary">
+    <div class="container">
+      <div class="yes-grid">
+        <div class="yes-card fade-up">
+          <span class="section-label">The Moment of Yes</span>
+          <h2>If you just thought,<br><em>“That’s me,”</em><br>this is your next step.</h2>
+          <p style="font-size: 1.15rem; line-height: 1.8;">Coaching gives you space to slow the swirl, understand what is happening inside of you, <strong>and reset so that you can finally take back control of your life and feel grounded and calm again.</strong></p>
+        </div>
+        <div class="yes-list">
+          <div class="yes-list-item fade-up delay-1">
+            <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>You want relief,</strong> but you do not know where to start.</span>
+          </div>
+          <div class="yes-list-item fade-up delay-2">
+            <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>You are tired of snapping or pushing through</strong> like nothing is wrong.</span>
+          </div>
+          <div class="yes-list-item fade-up delay-3">
+            <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span><strong>You want calm that lasts longer</strong> than one quiet evening.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Restored exact text format from your screenshot (no white boxes, just poetry-style text) -->
+  <section id="vision" style="padding-top: 6rem; text-align: center;">
+    <div class="container">
+      <h2 class="font-serif fade-up" style="max-width: 700px; margin: 0 auto 3.5rem auto; font-size: 2.5rem; line-height: 1.3;">
+        Imagine moving through your day without that constant internal pressure.
+      </h2>
+      
+      <div class="fade-up delay-1" style="font-size: 1.25rem; line-height: 1.8; color: var(--text-body); max-width: 600px; margin: 0 auto;">
+        <p style="margin-bottom: 2.5rem;">
+          You feel calmer in your body.<br>
+          More patient. More present.<br>
+          You respond instead of react.
+        </p>
+        
+        <p style="margin-bottom: 2.5rem;">
+          You have tools that actually work—<br>
+          in the middle of real life.
+        </p>
+        
+        <p>
+          Not because everything changed around you—<br>
+          but because <strong>you did.</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="bio" style="padding-top:4rem;">
+    <div class="container">
+      <div class="bio-grid">
+        <div class="fade-up">
+          <p style="font-size: 1.15rem; margin-bottom: 1.5rem;">Rachel is a mom of three specializing in supporting moms who are tired of holding it all together and are ready to release what they’ve been carrying so that they can take back control of their lives. Rachel brings compassion to her holistic coaching approach and has a special way of creating safe spaces for women to feel seen and supported as they navigate parenting, work, relationships, finances and whatever else feels heavy.</p>
+          <p style="font-size: 1.15rem;">Along with a Master’s degree in Education, Rachel is a certified parent coach and a National Board Certified Health and Wellness coach. Her work is grounded in trauma-informed, somatic practices that support nervous system regulation and sustainable change in everyday life.</p>
+        </div>
+        <div class="fade-up delay-1">
+          <img src="IMG_4099.jpeg" alt="Rachel McBride" class="bio-image">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">Rachel McBride Coaching</div>
+        <div class="footer-tagline">Release the pressure. Restore your calm.</div>
+        <div class="footer-contact"><p><a href="mailto:rachel@rachelmcbridecoaching.com">rachel@rachelmcbridecoaching.com</a></p></div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="process.html">Process</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="book.html">Book a Call</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <ul class="footer-links">
+          <li><a href="book.html">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Rachel McBride Coaching.</span>
+      <span>Made with intention — for the women who need it most.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  });
+</script>
+</body>
+</html>
+
+
+```
