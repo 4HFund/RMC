@@ -1,0 +1,365 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rachel McBride Coaching — Release the Pressure. Restore Your Calm.</title>
+<meta name="description" content="Rachel McBride Coaching helps overwhelmed moms release pressure, regulate stress, and feel calm, grounded, and connected to themselves again." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4eee6; /* Restored original warm beige */
+    --dark-brown: #4a3b31;   /* Restored rich dark brown */
+    --text-dark: #2b2b2b;
+    --text-body: #4a4a4a;
+    --terra: #b67358;        /* Restored softer terracotta */
+    --terra-hover: #9c5c44;
+    --border-light: #eaddd3;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'DM Sans', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-sans); color: var(--text-body); background-color: var(--bg-primary); line-height: 1.6; font-size: 16px; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+  h1, h2, h3, h4, .font-serif { font-family: var(--font-serif); color: var(--text-dark); font-weight: 500; }
+  a { text-decoration: none; color: inherit; transition: color 0.3s; }
+  img { max-width: 100%; height: auto; display: block; }
+  .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+  /* Buttons */
+  .btn-primary, .btn-secondary, .btn-outline-terra { display: inline-block; padding: 0.8rem 1.8rem; border-radius: 30px; font-weight: 500; cursor: pointer; transition: all 0.3s ease; text-align: center; }
+  .btn-primary { background: var(--terra) !important; color: white !important; border: 2px solid var(--terra) !important; }
+  .btn-primary:hover { background: var(--terra-hover) !important; border-color: var(--terra-hover) !important; }
+  .btn-secondary { background: transparent; color: var(--text-dark); border: 2px solid var(--text-dark); }
+  .btn-secondary:hover { background: var(--text-dark); color: white !important; }
+  .btn-outline-terra { background: transparent !important; color: var(--terra) !important; border: 1px solid var(--terra) !important; }
+  .btn-outline-terra:hover { background: var(--terra) !important; color: white !important; }
+
+  /* Navigation */
+  nav { position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid var(--border-light); padding: 1rem 0; }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: var(--font-serif); font-size: 1.5rem; color: var(--text-dark); font-weight: 600; }
+  .nav-logo span { color: var(--terra); font-style: italic; font-weight: 400; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a { font-size: 1rem; font-weight: 500; }
+  .nav-links a:hover, .nav-links a.active-link { color: var(--terra); }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .hamburger span { display: block; width: 25px; height: 2px; background: var(--text-dark); }
+  .mobile-menu { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: white; z-index: 2000; padding: 5rem 2rem; transition: right 0.3s ease; display: flex; flex-direction: column; gap: 2rem; box-shadow: -5px 0 30px rgba(0,0,0,0.1); }
+  .mobile-menu.open { right: 0; }
+  .mobile-menu a { font-size: 1.5rem; font-family: var(--font-serif); font-weight: 500; }
+  .mobile-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--text-dark); }
+  @media (max-width: 850px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+  /* Sections */
+  section { padding: 6rem 0; }
+  .section-label { display: block; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--terra); margin-bottom: 1rem; font-weight: 600; }
+  .section-headline { font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2; }
+  .section-headline em { color: var(--terra); font-style: italic; }
+  .section-intro { font-size: 1.15rem; max-width: 650px; margin-bottom: 3rem; color: var(--text-body); }
+  .bg-secondary { background-color: var(--bg-secondary); }
+
+  /* Hero */
+  #hero { padding: 4rem 0 6rem; display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
+  @media(min-width: 900px) { #hero { grid-template-columns: 1fr 1fr; padding: 6rem 0 8rem; } }
+  .hero-kicker { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--terra); font-weight: 600; margin-bottom: 1rem; }
+  .hero-headline { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
+  .hero-sub { font-size: 1.15rem; margin-bottom: 2rem; max-width: 500px; }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .hero-microcopy { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .hero-pill { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-secondary); padding: 0.5rem 1rem; border-radius: 30px; font-size: 0.85rem; font-weight: 500; border: none; }
+  .hero-pill span { color: var(--terra); }
+  .hero-visual { position: relative; }
+  .hero-photo-frame { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); background: #e0d8cc; aspect-ratio: 3/4; }
+  .hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+  .float-card { position: absolute; bottom: -20px; left: -20px; background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); max-width: 250px; z-index: 2; border: 1px solid var(--border-light); }
+  .float-card-label { font-size: 0.8rem; text-transform: uppercase; color: var(--terra); font-weight: 600; margin-bottom: 0.3rem; }
+  .float-card-text { font-family: var(--font-serif); font-size: 1.2rem; color: var(--text-dark); line-height: 1.3; }
+  .float-tag { position: absolute; top: 20px; right: -10px; background: var(--text-dark); color: white; padding: 0.5rem 1rem; border-radius: 30px; font-size: 0.85rem; z-index: 2; }
+
+  /* Trust Strip */
+  .trust-strip { border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); padding: 1.5rem 0; background: white; }
+  .trust-strip-inner { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem 2rem; }
+  .trust-item { font-size: 0.95rem; font-weight: 500; color: var(--text-body); text-transform: uppercase; letter-spacing: 0.05em; }
+  .trust-dot { width: 4px; height: 4px; background: var(--terra); border-radius: 50%; }
+
+  /* Transform Grid */
+  .grid-3 { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+  @media(min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+  .transform-card { padding: 2.5rem; background: var(--bg-secondary); border-radius: 20px; border: none; }
+  .transform-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .transform-label { font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-dark); margin-bottom: 0.8rem; font-weight: 600; }
+
+  /* Ideal Section */
+  .ideal-inner { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
+  @media(min-width: 900px) { .ideal-inner { grid-template-columns: 1fr 1fr; } }
+  .ideal-checklist { list-style: none; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .ideal-checklist li { display: flex; gap: 1rem; align-items: flex-start; font-size: 1.1rem; }
+  .ideal-photo-visual { position: relative; border-radius: 16px; overflow: hidden; background: #e0d8cc; aspect-ratio: 4/5; }
+  .ideal-photo-visual img { width: 100%; height: 100%; object-fit: cover; }
+  .ideal-photo-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 4rem 2rem 2rem; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; }
+  .ideal-quote-text { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; font-style: italic; }
+  .ideal-quote-attr { font-size: 0.9rem; text-transform: uppercase; opacity: 0.8; }
+  .check-icon { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--terra); }
+  .check-icon svg { width: 14px; height: 14px; stroke: var(--terra); }
+
+  /* Testimonials */
+  .imessage-msg { background: #e9e9eb; color: #000; padding: 1.2rem 1.5rem; border-radius: 1.2rem; border-bottom-left-radius: 0.2rem; font-size: 1.05rem; line-height: 1.5; margin-bottom: 1rem; position: relative; }
+  .testimonial-name { font-size: 0.9rem; color: #888; margin-left: 1rem; font-weight: 500; }
+
+  /* Lead Magnet */
+  .lead-inner { background: var(--terra); color: white; border-radius: 20px; padding: 4rem 2rem; text-align: center; max-width: 900px; margin: 0 auto; }
+  .lead-headline { font-size: 2.5rem; color: white; margin-bottom: 1rem; }
+  .lead-title { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 1rem; font-style: italic; }
+  .lead-desc { max-width: 600px; margin: 0 auto 2rem; font-size: 1.1rem; opacity: 0.9; }
+  .lead-mini-list { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; font-size: 0.9rem; text-transform: uppercase; font-weight: 600; }
+  .lead-inner .btn-primary { background: white !important; color: var(--terra) !important; border-color: white !important; }
+
+  /* Footer */
+  footer { background: #1a1a1a; color: #f0ebe1; padding: 5rem 0 2rem; margin-top: auto; }
+  .footer-inner { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 4rem; }
+  @media(min-width: 768px) { .footer-inner { grid-template-columns: 2fr 1fr 1fr; } }
+  .footer-brand-name { font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 0.5rem; color: white; }
+  .footer-tagline { color: var(--terra); margin-bottom: 1.5rem; font-style: italic; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .footer-links a { color: #ccc; transition: color 0.3s; }
+  .footer-links a:hover { color: white; }
+  .footer-col-title { color: white; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.9rem; color: #888; }
+
+  /* Animations */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<nav id="siteNav">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">Rachel <span>McBride</span> Coaching</a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="process.html">Process</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="book.html" class="nav-cta">Book a Call</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="process.html">Process</a>
+  <a href="services.html">Services</a>
+  <a href="book.html" style="color: var(--terra);">Book a Call</a>
+</div>
+
+<main>
+  <section id="hero">
+    <div class="container" style="display: inherit; grid-template-columns: inherit; gap: inherit; align-items: inherit;">
+      <div class="hero-content">
+        <div class="hero-kicker fade-up">For the mom carrying too much</div>
+        <h1 class="hero-headline fade-up delay-1">Release the pressure.<br>Restore your <em>calm.</em></h1>
+        <p class="hero-sub fade-up delay-2">You are not failing. You are carrying more than one nervous system was meant to hold alone. Rachel helps overwhelmed moms slow down, regulate stress, and feel like themselves again.</p>
+        
+        <div class="hero-buttons fade-up delay-3">
+          <a href="book.html" class="btn-primary">Book a Free Connection Call</a>
+          <a href="#reset" class="btn-secondary">Try the 5-Minute Reset</a>
+        </div>
+
+        <div class="hero-microcopy fade-up delay-4">
+          <div class="hero-pill"><span>✦</span> Virtual coaching</div>
+          <div class="hero-pill"><span>✦</span> Women’s circles</div>
+          <div class="hero-pill"><span>✦</span> Nervous system support</div>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-up delay-2">
+        <div class="hero-photo-frame">
+          <img src="IMG_4099.jpeg" alt="Rachel McBride">
+        </div>
+        <div class="float-card">
+          <div class="float-card-label">Today’s permission</div>
+          <div class="float-card-text">You do not have to hold it all by yourself.</div>
+        </div>
+        <div class="float-tag">✦ Virtual &amp; In-Person Support</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-strip">
+    <div class="container trust-strip-inner fade-up">
+      <div class="trust-item">Private, compassionate support</div><div class="trust-dot"></div>
+      <div class="trust-item">Created for overloaded moms</div><div class="trust-dot"></div>
+      <div class="trust-item">Simple tools for real life</div><div class="trust-dot"></div>
+      <div class="trust-item">Start with one gentle step</div>
+    </div>
+  </section>
+
+  <section id="transformation">
+    <div class="container">
+      <div class="fade-up">
+        <span class="section-label">What Becomes Possible</span>
+        <h2 class="section-headline">This is where the pressure starts to <em>loosen.</em></h2>
+        <p class="section-intro">Rachel helps high-achieving, deeply caring moms slow down, regulate their nervous systems, reconnect with themselves, and build support that actually fits real life.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="transform-card fade-up delay-1">
+          <div class="transform-icon">🌿</div>
+          <div class="transform-label">Grounded</div>
+          <p>You feel anchored in your body and present in your life instead of swept away by everyone else’s needs.</p>
+        </div>
+        <div class="transform-card fade-up delay-2">
+          <div class="transform-icon">☁️</div>
+          <div class="transform-label">Calmer</div>
+          <p>Your nervous system begins learning a new baseline — one that is not always bracing for the next thing.</p>
+        </div>
+        <div class="transform-card fade-up delay-3">
+          <div class="transform-icon">✨</div>
+          <div class="transform-label">More Energized</div>
+          <p>You stop running on empty and start moving through your days with more capacity, clarity, and steadiness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ideal" class="bg-secondary">
+    <div class="container">
+      <div class="ideal-inner">
+        <div class="ideal-photo-visual fade-up">
+          <img src="IMG_4100.jpeg" alt="Rachel McBride with family">
+          <div class="ideal-photo-overlay">
+            <span class="ideal-quote-mark">“</span>
+            <p class="ideal-quote-text">Support for the woman carrying a family, a schedule, and a heart that needs care too.</p>
+            <div class="ideal-quote-attr">Real life. Real support.</div>
+          </div>
+        </div>
+
+        <div>
+          <span class="section-label fade-up">Is This You?</span>
+          <h2 class="section-headline fade-up delay-1">This is for you if…</h2>
+          <ul class="ideal-checklist">
+            <li class="fade-up delay-1">
+              <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              You feel constantly behind, even when you are doing everything you can.
+            </li>
+            <li class="fade-up delay-2">
+              <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              Your brain will not turn off at night.
+            </li>
+            <li class="fade-up delay-3">
+              <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              You snap at people you love, then carry the guilt afterward.
+            </li>
+            <li class="fade-up delay-4">
+              <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              You feel stretched thin by work, family, schedules, finances, and expectations.
+            </li>
+            <li class="fade-up delay-5">
+              <span class="check-icon"><svg viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              You want space, ease, calm, and the feeling of being yourself again.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="container">
+      <div class="fade-up">
+        <span class="section-label">Women’s Words</span>
+        <p class="section-intro">The right support can help you stop carrying everything alone.</p>
+      </div>
+      <div class="grid-3">
+        <div class="fade-up delay-1">
+          <div class="imessage-msg">I really enjoyed the wellness circle. Your voice was calming and it only took me a little to feel like I was out of my thoughts and in my body. Of course I know you so maybe if I didn’t it might have taken me a little longer to relax but I didn’t know anyone around me and still relaxed.</div>
+          <div class="testimonial-name">— Wellness Circle Participant</div>
+        </div>
+        <div class="fade-up delay-2">
+          <div class="imessage-msg">Who knew I could focus on what I was doing in the moment-and not worry or think about the next thing on my to-do list! It was a much needed time to focus on myself!</div>
+          <div class="testimonial-name">— Wellness Circle Participant</div>
+        </div>
+        <div class="fade-up delay-3">
+          <div class="imessage-msg">Thanks again for the invite. I enjoyed the wellness circle very much. It was nice to take some time out of my busy day just for me! The 1 hour timeslot felt appropriate- not too long or too short. I felt more, calm, relaxed and lighter after and would recommend it to everyone to try.</div>
+          <div class="testimonial-name">— Wellness Circle Participant</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="reset" style="padding-top:0;">
+    <div class="container">
+      <div class="lead-inner fade-up">
+        <h2 class="lead-headline">Start with one simple reset.</h2>
+        <p class="lead-title">The 5-Minute Calm Reset</p>
+        <p class="lead-desc">A simple digital guide to help you pause, breathe, and release pressure when your mind and body feel overloaded. No perfection. Just a gentle place to begin.</p>
+        <div class="lead-mini-list">
+          <span>Takes 5 minutes</span><span>No email pressure</span><span>Start right now</span>
+        </div>
+        <a href="book.html" class="btn-primary">Begin the Reset Now</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">Rachel McBride Coaching</div>
+        <div class="footer-tagline">Release the pressure. Restore your calm.</div>
+        <div class="footer-contact"><p><a href="mailto:rachel@rachelmcbridecoaching.com">rachel@rachelmcbridecoaching.com</a></p></div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="process.html">Process</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="book.html">Book a Call</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <ul class="footer-links">
+          <li><a href="book.html">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Rachel McBride Coaching.</span>
+      <span>Made with intention — for the women who need it most.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  });
+</script>
+</body>
+</html>
+
+
+```
